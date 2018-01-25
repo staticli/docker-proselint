@@ -10,4 +10,6 @@ RUN useradd -ms /bin/sh user
 
 COPY entrypoint.sh /bin/entrypoint.sh
 
+WORKDIR /usr/src/app
+
 ENTRYPOINT [ "/bin/entrypoint.sh" ]
