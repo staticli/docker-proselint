@@ -4,8 +4,8 @@ services:
 env:
   global:
     - REGISTRY_USER=staticlibot
-    - secure: "GtElFHDHDc58OS2dnIuOSDo8lpHVkLkTNDcd+oVEFo5C/ZHuW9mP3bZB0+W8/m9FMI09fTdSkG5fzJm6j32Nk8TVcb2UqHH7YQxb42iAmrsaUcA+EUKt1exNVXNZwilOfOMx8KKTZFs777eD6fPwvM3W8bU9Uiz3mk5XWlmF1jJ8/l9N/oAQerLgFNPixHKXY+UEakMceygLzA7kUxo+cH21Aq1i7wemS5JW2OsCABiNB/UWJgt8Lnqew3eotaZwwoLOchltG88EABoZCLLAj/eK0DeD4qObgZMfTxbu+v+xJsdaENAZnUaLXxEkK4xM9KVD4vI3qGAXn8Mp2O1Kg/1nL0u1EcsISOlA3jWCG6Mf/xwbuLKa0DJR3zpEZ4LW5PYATKqziH8f66ioIVtv7gIkz4tH86OGCxFGRp9HXWiDIhnkWIEK3NlvkT7hcgTLn2Q3ZluJaJt7OzthWQG6C5dwZFEE9KJ98/tseZAnnL/gRM/e9PZcpBHgmrCodwFXEPDY8NcOdLx/0Pbv6Ky0q12tLeh6orn+HCQo/CxPHYkCHQ9P62SsyAirxCYsgh1iheS1Gzb9GgPjEkX//W5NaUohBPx/dN4f5PV3QqTL8GrCW4JsVDdv3x1N4CrnTihlLcPrGgoZQ/KdGCEQA0enu58YacQ0BmH164I/A6p3p8k="
-
+    - secure: "qRi/+QExh3oqZe7U6cG6Uc9S0RqlsJUOBzPn+CNlwKMcGOB9LSoiNLFM5Z12ifSZrtdcqBm6GtRwwIz0Z+OzzY5ndZKx7mE+PDVFKedVuozv9eQt7Ms6ymOB6hZPNq3Pz/dfRxPRXVej+CQ6z1/jFRgwdxw+pY0oEkMaVRa+hghtiPJ30N85h3GIzXlmO8napFbqB3j28VzqBqy0qrO+ToXF0T9i45goLaKWFqE93uE07jLrfXoyaMteE1PsArEjt9L/kAXouFNGosTH754t4z2vg7MwmKAgNXcKHnIOspLtBHOr7BAP0ha2Lhg8h4Cuo9rNzpoqOSDKueObyoCMyqcNOJZR33u7d7XLXraU3MqGdgEuLs4iL5FU/RebMmxsK3ZA0egslU4R6OarKujD0vuEaPge5VJgpsIwibfR4pvIpGZhC6H0hLxBSw56GwGweh+LTm3VprFtOB+hHodp9XXmqdU0NKhOVLZZExQgjbrXczaeFTLmSrj0K1gRDdtjU3DReDhYPHRTm7AyX4YtxK8JNSj5BdqAc63n/oEjIhqCqaHRczApGUyr7EeYCnr4lRTjA02tH6V0zMhQTXtve16ed8r4XfrxJpA8feuhoAEB5NKfdvUOjpt1TbElynjNX+G3u7UFvAbMMz15y9MaTA/4SS/Ez6lq4eVdIO16odk="
+    
 script:
   - docker build --tag staticli/proselint .
   - docker run staticli/proselint
@@ -14,7 +14,7 @@ after_script:
   - docker images
 
 before_deploy:
-  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+  - docker login -u "$REGISTRY_USER" -p '$REGISTRY_PASS'
 deploy:
   provider: script
   script: docker push staticli/proselint
